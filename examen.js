@@ -112,7 +112,7 @@ function soummetreTest() {
                     if (answers[i][j] === corrections.b1[i][j]) {
                         console.log('correct');
                         aswers[0][0] = 'B';
-                        aswers[0][1] = 'D';
+                        aswers[0][1] = 'D' 
                     } else {
                         console.log('incorrect');
                     }
