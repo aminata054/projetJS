@@ -5,6 +5,7 @@ var commencer = document.getElementById('commencer');
 var monImage = document.getElementById('monImage');
 var couvImage = document.getElementById('couvImage');
 var div = document.getElementById('div1');
+var tableau_de_resultat = document.getElementById('tableau_de_resultat');
 var pageList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
 var numPage = pageList[0];
 var type = monImage.className;
@@ -99,6 +100,9 @@ let corrections = {
 }
 
 function soummetreTest() {
+    monImage.style.display = 'none';
+    div.style.display = 'none';
+    tableau_de_resultat.toggleAttribute('hidden');
     getAnswers();
     answers.shift();
     // recuperer les reponses
@@ -108,14 +112,27 @@ function soummetreTest() {
     switch (type) {
         case 'B1': 
             for (var i = 0; i < answers.length; i++) {
+                k = i + 1;
+                // console.log("B1-" + k);
                 for (let j = 0; j < corrections.b1[i].length; j++) {
+                    // console.log(answers[i][j]);
+                    // console.log(corrections.b1[i][j]);
+
+                    let tr = document.getElementById('q' + k); // B1-1-1 B1-1-2
+                    let tdResponse = document.getElementById("reponse"+k);
+                    let tdResultat = document.querySelectorAll("resultat"+k);
+                    tdResponse.innerHTML = '';
+                    tdResultat.innerHTML = '';
                     if (answers[i][j] === corrections.b1[i][j]) {
-                        console.log('correct');
-                        aswers[0][0] = 'B';
-                        aswers[0][1] = 'D';
+                        tr.style.backgroundColor = 'green';
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b1[i][j];
                     } else {
-                        console.log('incorrect');
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b1[i][j];
+                        tr.style.backgroundColor = 'red';
                     }
+
                 }
             }
             break; 
