@@ -118,7 +118,7 @@ function soummetreTest() {
                     }
                 }
             }
-            break;
+            break; 
         case 'B2': console.log(corrections.b2); break;
         case 'B3': console.log(corrections.b3); break;
         case 'B4': console.log(corrections.b4); break;
@@ -133,3 +133,4 @@ function soummetreTest() {
         default: console.log('default');
     }
 }
+//test 
