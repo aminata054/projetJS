@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #FDD6A8;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: rgb(8, 8, 8);
+    height: 100vh; 
+    column-fill: auto;   
+    
+}
+
+#couvImage {
+    width: 60%;
+    height: 90%;
+    float: left;
+    border-radius: 30px;
+    padding: 5px;
+    box-shadow: rgba(162, 122, 208, 0.2) 0 15px 30px -5px;
+}
+
+#monImage {
+    display: none;
+    width: 60%;
+    height: 90%;
+    float: left;
+    border-radius: 30px;
+    padding: 5px;
+    box-shadow: rgba(162, 122, 208, 0.2) 0 15px 30px -5px;
+}
+
+#div1 {
+    display: none;
+    position: relative;
+    top: 100px;
+    left: 150px;
+}
+
+#input {
+    transform: scale(5);
+    margin: 30px; 
+}
+
+.btn {
+ appearance: none;
+ background-color: transparent;
+ border: 0.125em solid #1A1A1A;
+ border-radius: 0.9375em;
+ box-sizing: border-box;
+ color: #3B3B3B;
+ cursor: pointer;
+ display: inline-block;
+ font-size: 16px;
+ font-weight: 600;
+ line-height: normal;
+ margin: 0;
+ outline: none;
+ padding: 1em 2.3em;
+ text-align: center;
+ text-decoration: none;
+ transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+ user-select: none;
+ -webkit-user-select: none;
+ touch-action: manipulation;
+ will-change: transform;
+}
+
+.btn#commencer {
+    position: relative;
+    top: 50%;
+    left: 17%;
+}
+
+.btn:hover:enabled {
+    color: #fff;
+    background-color: #1A1A1A;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+   }
+
+.btn:disabled {
+    /* opacity: 0.5;: */
+    /* color: #fff; */
+    filter: blur(2px);
+    cursor: not-allowed;
+    /* background-color: #1A1A1A; */
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px; */
+    /* transform: translateY(-2px); */
+   }
+
+.btn#soummetre {
+    display: none;
+}
