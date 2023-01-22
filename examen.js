@@ -111,6 +111,8 @@ function soummetreTest() {
                 for (let j = 0; j < corrections.b1[i].length; j++) {
                     if (answers[i][j] === corrections.b1[i][j]) {
                         console.log('correct');
+                        aswers[0][0] = 'B';
+                        aswers[0][1] = 'D';
                     } else {
                         console.log('incorrect');
                     }
