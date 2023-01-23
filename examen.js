@@ -30,23 +30,19 @@ function commencerTest() {
 function pageSuivante() {
     getAnswers();
     resetCheckboxes();
-    numPage++; //25
+    numPage++;
     precedent.removeAttribute('disabled');
     if (pageList.includes(numPage)) {
         var source = "./img/"+type+"/"+type+"-"+numPage+".jpg" ;
         monImage.setAttribute("src", source);
-
         if (!(pageList.includes(numPage + 1))) {
             suivant.toggleAttribute('disabled')
         }
     }
-
     if (numPage == 25) {
         suivant.style.display = "none";
-        soummetre.style.display = "inline-block";
-        
+        soummetre.style.display = "inline-block";   
     }
-    
 }
 function pagePrecedente() {
     getAnswers();
@@ -60,7 +56,6 @@ function pagePrecedente() {
     if (pageList.includes(numPage)) {
         var source = "./img/"+type+"/"+type+"-"+numPage+".jpg" ;
         monImage.setAttribute("src", source);
-
         if (!(pageList.includes(numPage - 1))) {
             precedent.toggleAttribute('disabled')
         }
@@ -74,16 +69,10 @@ function getAnswers() {
     answers[numPage] = checkedValues;
 }
 function resetCheckboxes() {
-    // recuperer tous les elements de type checkbox
-    // parcourir le tableau contenant ces element
-    // il reinitialise chacun de ces elements
-    
     Array.from(checkboxArray).map(function(checkbox) {
         checkbox.checked = false;
-    })    
-    
+    })
 }
-
 let corrections = {
 	b1 : [['B','D'], ['A','D'], ['B'], ['B','C'], ['B'], ['A'], ['B'], ['B'], ['A','D'], ['B'], ['C'], ['B','C'], ['A','D'], ['A','C'], ['B'], ['B'], ['B'], ['A'], ['B'], ['B'], ['A'], ['B'], ['A'], ['B'], ['B']],
 	b2 : [['A','D'], ['B','D'], ['B','D'], ['B'], ['A','D'], ['A'], ['A','D'], ['B'], ['B','D'], ['B'], ['B'], ['B','D'], ['A'], ['B'], ['A'], ['B'], ['B'], ['B','C'], ['A'], ['B'], ['A'], ['A'], ['A','C'], ['B','D'], ['B','C']],
@@ -98,27 +87,19 @@ let corrections = {
 	b11 : [['A','D'], ['B','D'], ['B','D'], ['A','D'], ['A'], ['B'], ['A'], ['B'], ['B','C'], ['B'], ['B'], ['B'], ['A','C'], ['A'], ['B'], ['A','C'], ['A'], ['B','C'], ['A'], ['B','C'], ['B'], ['A'], ['A','D'], ['B'], ['A']],
 	b12 : [['A','D'], ['B','D'], ['B'], ['B','C'], ['B'], ['A'], ['A'], ['A'], ['B'], ['B'], ['B'], ['B'], ['B','C'], ['A','D'], ['B'], ['B','C'], ['B','C'], ['A'], ['A'], ['B'], ['A'], ['A'], ['B'], ['B','C'], ['B']],
 }
-
 function soummetreTest() {
     monImage.style.display = 'none';
     div.style.display = 'none';
     tableau_de_resultat.toggleAttribute('hidden');
     getAnswers();
     answers.shift();
-    // recuperer les reponses
-    // console.log(answers);
-    // vérifier les reponses
-    // afficher les reponses
+
     switch (type) {
         case 'B1': 
             for (var i = 0; i < answers.length; i++) {
                 k = i + 1;
-                // console.log("B1-" + k);
                 for (let j = 0; j < corrections.b1[i].length; j++) {
-                    // console.log(answers[i][j]);
-                    // console.log(corrections.b1[i][j]);
-
-                    let tr = document.getElementById('q' + k); // B1-1-1 B1-1-2
+                    let tr = document.getElementById('q' + k);
                     let tdResponse = document.getElementById("reponse"+k);
                     let tdResultat = document.querySelectorAll("resultat"+k);
                     tdResponse.innerHTML = '';
@@ -132,21 +113,251 @@ function soummetreTest() {
                         tdResultat.innerHTML += corrections.b1[i][j];
                         tr.style.backgroundColor = 'red';
                     }
-
                 }
             }
-            break; 
-        case 'B2': console.log(corrections.b2); break;
-        case 'B3': console.log(corrections.b3); break;
-        case 'B4': console.log(corrections.b4); break;
-        case 'B5': console.log(corrections.b5); break;
-        case 'B6': console.log(corrections.b6); break;
-        case 'B7': console.log(corrections.b7); break;
-        case 'B8': console.log(corrections.b8); break;
-        case 'B9': console.log(corrections.b9); break;
-        case 'B10': console.log(corrections.b10); break;
-        case 'B11': console.log(corrections.b11); break;
-        case 'B12': console.log(corrections.b12); break;
+        break;
+
+        case 'B2': 
+            for (var i = 0; i < answers.length; i++) {
+                k = i + 1;
+                for (let j = 0; j < corrections.b2[i].length; j++) {
+                    let tr = document.getElementById('q' + k);
+                    let tdResponse = document.getElementById("reponse"+k);
+                    let tdResultat = document.querySelectorAll("resultat"+k);
+                    tdResponse.innerHTML = '';
+                    tdResultat.innerHTML = '';
+                    if (answers[i][j] === corrections.b2[i][j]) {
+                        tr.style.backgroundColor = 'green';
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b2[i][j];
+                    } else {
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b2[i][j];
+                        tr.style.backgroundColor = 'red';
+                    }
+                }
+            }
+        break;
+
+        case 'B3': 
+            for (var i = 0; i < answers.length; i++) {
+                k = i + 1;
+                for (let j = 0; j < corrections.b3[i].length; j++) {
+                    let tr = document.getElementById('q' + k);
+                    let tdResponse = document.getElementById("reponse"+k);
+                    let tdResultat = document.querySelectorAll("resultat"+k);
+                    tdResponse.innerHTML = '';
+                    tdResultat.innerHTML = '';
+                    if (answers[i][j] === corrections.b3[i][j]) {
+                        tr.style.backgroundColor = 'green';
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b3[i][j];
+                    } else {
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b3[i][j];
+                        tr.style.backgroundColor = 'red';
+                    }
+                }
+            }
+        break;
+
+        case 'B4':
+            for (var i = 0; i < answers.length; i++) {
+                k = i + 1;
+                for (let j = 0; j < corrections.b4[i].length; j++) {
+                    let tr = document.getElementById('q' + k);
+                    let tdResponse = document.getElementById("reponse"+k);
+                    let tdResultat = document.querySelectorAll("resultat"+k);
+                    tdResponse.innerHTML = '';
+                    tdResultat.innerHTML = '';
+                    if (answers[i][j] === corrections.b4[i][j]) {
+                        tr.style.backgroundColor = 'green';
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b4[i][j];
+                    } else {
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b4[i][j];
+                        tr.style.backgroundColor = 'red';
+                    }
+                }
+            }
+        break;
+
+        case 'B5':
+            for (var i = 0; i < answers.length; i++) {
+                k = i + 1;
+                for (let j = 0; j < corrections.b5[i].length; j++) {
+                    let tr = document.getElementById('q' + k);
+                    let tdResponse = document.getElementById("reponse"+k);
+                    let tdResultat = document.querySelectorAll("resultat"+k);
+                    tdResponse.innerHTML = '';
+                    tdResultat.innerHTML = '';
+                    if (answers[i][j] === corrections.b5[i][j]) {
+                        tr.style.backgroundColor = 'green';
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b5[i][j];
+                    } else {
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b5[i][j];
+                        tr.style.backgroundColor = 'red';
+                    }
+                }
+            }
+        break;
+
+        case 'B6':
+            for (var i = 0; i < answers.length; i++) {
+                k = i + 1;
+                for (let j = 0; j < corrections.b6[i].length; j++) {
+                    let tr = document.getElementById('q' + k);
+                    let tdResponse = document.getElementById("reponse"+k);
+                    let tdResultat = document.querySelectorAll("resultat"+k);
+                    tdResponse.innerHTML = '';
+                    tdResultat.innerHTML = '';
+                    if (answers[i][j] === corrections.b6[i][j]) {
+                        tr.style.backgroundColor = 'green';
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b6[i][j];
+                    } else {
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b6[i][j];
+                        tr.style.backgroundColor = 'red';
+                    }
+                }
+            }
+        break;
+
+        case 'B7':
+            for (var i = 0; i < answers.length; i++) {
+                k = i + 1;
+                for (let j = 0; j < corrections.b7[i].length; j++) {
+                    let tr = document.getElementById('q' + k);
+                    let tdResponse = document.getElementById("reponse"+k);
+                    let tdResultat = document.querySelectorAll("resultat"+k);
+                    tdResponse.innerHTML = '';
+                    tdResultat.innerHTML = '';
+                    if (answers[i][j] === corrections.b7[i][j]) {
+                        tr.style.backgroundColor = 'green';
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b7[i][j];
+                    } else {
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b7[i][j];
+                        tr.style.backgroundColor = 'red';
+                    }
+                }
+            }
+        break;
+
+        case 'B8':
+            for (var i = 0; i < answers.length; i++) {
+                k = i + 1;
+                for (let j = 0; j < corrections.b8[i].length; j++) {
+                    let tr = document.getElementById('q' + k);
+                    let tdResponse = document.getElementById("reponse"+k);
+                    let tdResultat = document.querySelectorAll("resultat"+k);
+                    tdResponse.innerHTML = '';
+                    tdResultat.innerHTML = '';
+                    if (answers[i][j] === corrections.b8[i][j]) {
+                        tr.style.backgroundColor = 'green';
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b8[i][j];
+                    } else {
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b8[i][j];
+                        tr.style.backgroundColor = 'red';
+                    }
+                }
+            }
+        break;
+
+        case 'B9':
+            for (var i = 0; i < answers.length; i++) {
+                k = i + 1;
+                for (let j = 0; j < corrections.b9[i].length; j++) {
+                    let tr = document.getElementById('q' + k);
+                    let tdResponse = document.getElementById("reponse"+k);
+                    let tdResultat = document.querySelectorAll("resultat"+k);
+                    tdResponse.innerHTML = '';
+                    tdResultat.innerHTML = '';
+                    if (answers[i][j] === corrections.b9[i][j]) {
+                        tr.style.backgroundColor = 'green';
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b9[i][j];
+                    } else {
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b9[i][j];
+                        tr.style.backgroundColor = 'red';
+                    }
+                }
+            }
+        break;
+
+        case 'B10':
+            for (var i = 0; i < answers.length; i++) {
+                k = i + 1;
+                for (let j = 0; j < corrections.b10[i].length; j++) {
+                    let tr = document.getElementById('q' + k);
+                    let tdResponse = document.getElementById("reponse"+k);
+                    let tdResultat = document.querySelectorAll("resultat"+k);
+                    tdResponse.innerHTML = '';
+                    tdResultat.innerHTML = '';
+                    if (answers[i][j] === corrections.b10[i][j]) {
+                        tr.style.backgroundColor = 'green';
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b10[i][j];
+                    } else {
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b10[i][j];
+                        tr.style.backgroundColor = 'red';
+                    }
+                }
+            }
+        break;
+
+        case 'B11':
+            for (var i = 0; i < answers.length; i++) {
+                k = i + 1;
+                for (let j = 0; j < corrections.b11[i].length; j++) {
+                    let tr = document.getElementById('q' + k);
+                    let tdResponse = document.getElementById("reponse"+k);
+                    let tdResultat = document.querySelectorAll("resultat"+k);
+                    tdResponse.innerHTML = '';
+                    tdResultat.innerHTML = '';
+                    if (answers[i][j] === corrections.b11[i][j]) {
+                        tr.style.backgroundColor = 'green';
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b11[i][j];
+                    } else {
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b11[i][j];
+                        tr.style.backgroundColor = 'red';
+                    }
+                }
+            }
+        break;
+
+        case 'B12':
+            for (var i = 0; i < answers.length; i++) {
+                k = i + 1;
+                for (let j = 0; j < corrections.b12[i].length; j++) {
+                    let tr = document.getElementById('q' + k);
+                    let tdResponse = document.getElementById("reponse"+k);
+                    let tdResultat = document.querySelectorAll("resultat"+k);
+                    tdResponse.innerHTML = '';
+                    tdResultat.innerHTML = '';
+                    if (answers[i][j] === corrections.b12[i][j]) {
+                        tr.style.backgroundColor = 'green';
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b12[i][j];
+                    } else {
+                        tdResponse.innerHTML += answers[i][j];
+                        tdResultat.innerHTML += corrections.b12[i][j];
+                        tr.style.backgroundColor = 'red';
+                    }
+                }
+            }
+        break;
         default: console.log('default');
     }
 }
